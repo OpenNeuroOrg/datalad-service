@@ -40,7 +40,7 @@ jobs:
     machine:
       enabled: true
     steps:
-      # - checkout
+      - checkout
       
       # login
       - run: docker login  -u $DOCKER_USER -p $DOCKER_PASS
