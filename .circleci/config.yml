@@ -28,7 +28,7 @@ jobs:
       - checkout
 
       # install dependencies
-       - run: sudo apt-get update && sudo apt-get install build-essential && sudo apt-get install libxml2-dev libxslt-dev
+      #  - run: sudo apt-get update && sudo apt-get install build-essential && sudo apt-get install libxml2-dev libxslt-dev
       
       # login
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
