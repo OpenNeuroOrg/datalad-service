@@ -3,7 +3,6 @@ version: 2
 jobs:
   
   test:
-    machine:
     docker:
       - image: circleci/python:3.6.4
     steps:
