@@ -2,8 +2,11 @@ version: 2
 
 jobs:
   test:
-    docker:
-      - image: python:3.6.4-alpine3.7
+    machine:
+      python:
+        version: pypy-3.6.4
+    # docker:
+    #   - image: python:3.6.4-alpine3.7
     steps:
       - checkout
       - run: python --version
