@@ -17,10 +17,7 @@ jobs:
           command: sudo pip install -r requirements.txt
 
       # install git-annex
-      - run: wget https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz \
-                && tar -xvf git-annex-standalone-amd64.tar.gz \
-                && rm git-annex-standalone-amd64.tar.gz \
-                && mv git-annex.linux/* /usr/local/bin
+      - run: curl https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz | tar -xvz && rm git-annex-standalone-amd64.tar.gz && mv git-annex.linux/* /usr/local/bin
 
       # run unit tests
       - run: pytest
