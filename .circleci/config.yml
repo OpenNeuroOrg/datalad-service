@@ -23,6 +23,8 @@ jobs:
       - run: pytest
 
   deploy-prod:
+    docker:
+      - image: circleci/python:3.6.4
     steps:
       - checkout
       
@@ -36,6 +38,8 @@ jobs:
       - run: docker tag -f openneuro/datalad-service openneuro/datalad-service:latest
       - run: docker push openneuro/datalad-service
   deploy-dev:
+    docker:
+      - image: circleci/python:3.6.4
     steps:
       - checkout
       
