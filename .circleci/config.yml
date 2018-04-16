@@ -6,9 +6,6 @@ jobs:
       - checkout
       - run: pytest
   deploy-prod:
-    branches:
-      only: 
-        - master
     machine: 
       node:
         version: 8.2.0
