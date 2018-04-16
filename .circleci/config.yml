@@ -8,21 +8,15 @@ jobs:
       - checkout
 
       # get the build-essentials so we can compile
-      - run: sudo apt-get install build-essentials
+      - run: apt-get install build-essentials
 
       # check python version
       - run: python --version
 
-      # install virtualenv
-      - run: pip install virtualenv
-
       # create venv and install dependencies
       - run:
-          name: Install Python deps in a venv
-          command: |
-            virtualenv --python python3 .venv
-            source .venv/bin/activate
-            pip3 install -r requirements.txt
+          name: Install Python deps
+          command: pip install -r requirements.txt
 
       # install git-annex
       - run: sudo apt-get update && sudo apt-get install git-annex
