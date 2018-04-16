@@ -9,7 +9,7 @@ jobs:
         - docker
     steps:
       - checkout
-
+      - run: python --version
       # install requirements.txt 
       - run: pip install -r requirements.txt
 
