@@ -10,8 +10,8 @@ jobs:
     steps:
       - checkout
 
-      # install requirements.txt 
-      - run: pip install -r requirements.txt
+      # # install requirements.txt 
+      # - run: pip install -r requirements.txt
 
       # install git-annex
       - run: sudo apt-get update && sudo apt-get install git-annex
@@ -45,7 +45,7 @@ jobs:
       node:
         version: 8.2.0
       python:
-        version: 3.6.4
+        version: pypy-3.6.4
       services:
         - docker
     steps:
