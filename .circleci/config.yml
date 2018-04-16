@@ -9,8 +9,16 @@ jobs:
         - docker
     steps:
       - checkout
+
+      # install requirements.txt 
       - run: pip install -r requirements.txt
+
+      # install git-annex
+      - run: apt-get install git-annex
+
+      # run unit tests
       - run: pytest
+      
   deploy-prod:
     machine: 
       node:
