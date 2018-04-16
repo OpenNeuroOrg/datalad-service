@@ -55,4 +55,4 @@ workflows:
       - build
       - deploy-prod:
         requires: 
-        - test
+        - build
