@@ -17,7 +17,7 @@ jobs:
       - run: sudo apt-get update && sudo apt-get install git-annex
 
       # run unit tests
-      - run: pytest
+      - run: python -m pytest
 
   deploy-prod:
     machine: 
