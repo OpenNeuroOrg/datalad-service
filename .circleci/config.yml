@@ -3,8 +3,6 @@ version: 2
 jobs:
   test:
     machine: 
-      node:
-        version: 8.2.0
       services:
         - docker
     steps:
@@ -17,12 +15,10 @@ jobs:
       - run: sudo apt-get update && sudo apt-get install git-annex
 
       # run unit tests
-      - run: pytest
+      - run: python3 -m pytest
 
   deploy-prod:
     machine: 
-      node:
-        version: 8.2.0
       services:
         - docker
     steps:
@@ -38,14 +34,7 @@ jobs:
       - run: docker tag -f openneuro/datalad-service openneuro/datalad-service:latest
       - run: docker push openneuro/datalad-service
   deploy-dev:
-    branches:
-      ignore: 
-        - master
-    machine: 
-      node:
-        version: 8.2.0
-      python:
-        version: pypy-3.6.4
+    machine:
       services:
         - docker
     steps:
@@ -63,6 +52,9 @@ jobs:
 
 workflows:
   version: 2
+  machine:
+    python:
+      version: pypy-3.6.4
   build:
     jobs:
       - test
