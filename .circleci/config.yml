@@ -9,7 +9,8 @@ jobs:
         - docker
     steps:
       - checkout
-      - run: pytest
+      - run: pip install -r requirements.txt
+      # - run: docker
   deploy-prod:
     machine: 
       node:
