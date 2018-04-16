@@ -2,9 +2,6 @@ version: 2
 
 jobs:
   test:
-    machine:
-      python:
-        version: 3.6.4
     # docker:
     #   - image: python:3.6.4-alpine3.7
     steps:
@@ -58,6 +55,9 @@ jobs:
 
 workflows:
   version: 2
+  machine:
+    python:
+      version: 3.6.4
   build:
     jobs:
       - test
