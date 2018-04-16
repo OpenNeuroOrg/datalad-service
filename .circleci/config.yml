@@ -21,45 +21,26 @@ jobs:
       # run unit tests
       - run: pytest
 
-  deploy-prod:
+  deploy:
     machine:
       enabled: true
     steps:
       - checkout
-      
-      # check environment variables
-      - run: echo $DOCKER_USER && echo $DOCKER_PASS
       
       # login
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       
       # build datalad-service 
-      - run: docker build --pull -t openneuro/datalad-service
+      - run: docker build -t openneuro/datalad-service .
 
-      # update latest tag
-      - run: docker tag -f openneuro/datalad-service openneuro/datalad-service:latest
+      # push datalad-service
       - run: docker push openneuro/datalad-service
-  deploy-dev:
-    machine:
-      enabled: true
-    steps:
-      - checkout
-      
-      # login
-      - run: docker login  -u $DOCKER_USER -p $DOCKER_PASS
-      
-      # build datalad-service 
-      - run: docker build --pull -t openneuro/datalad-service
-
-      # update latest tag
-      - run: docker tag -f openneuro/datalad-service openneuro/datalad-service:$CIRCLE_TAG
-      - run: docker push openneuro/datalad-service:$CIRCLE_TAG
 
 workflows:
   version: 2
   build-and-deploy:
     jobs:
       - test
-      - deploy-prod:
+      - deploy:
           requires: 
             - test
