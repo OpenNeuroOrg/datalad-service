@@ -7,15 +7,17 @@ jobs:
       - image: python:3.6.4-alpine3.7
     steps:
       - checkout
+
+      # check python version
+      - run: python --version
+
+      # create venv and install dependencies
       - run:
           name: Install Python deps in a venv
           command: |
             python3 -m venv venv
             . venv/bin/activate
             pip install -r requirements.txt
-
-      # check python version
-      - run: python --version
 
       # install git-annex
       - run: sudo apt-get update && sudo apt-get install git-annex
