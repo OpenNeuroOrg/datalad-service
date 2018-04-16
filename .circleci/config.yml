@@ -57,7 +57,7 @@ workflows:
   version: 2
   build:
     jobs:
-      - test
-      - deploy-prod
-        # requires:
-        #   - test
+      # - test
+      - deploy-prod:
+        requires:
+          - test
