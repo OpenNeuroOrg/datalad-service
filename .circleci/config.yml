@@ -44,6 +44,8 @@ jobs:
     machine: 
       node:
         version: 8.2.0
+      python:
+        version: 3.6.4
       services:
         - docker
     steps:
