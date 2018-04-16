@@ -3,6 +3,8 @@ version: 2
 jobs:
   test:
     machine: 
+      python:
+        version: pypy-3.6.4
       services:
         - docker
     steps:
@@ -19,6 +21,8 @@ jobs:
 
   deploy-prod:
     machine: 
+      python:
+        version: pypy-3.6.4
       services:
         - docker
     steps:
@@ -35,6 +39,8 @@ jobs:
       - run: docker push openneuro/datalad-service
   deploy-dev:
     machine:
+      python:
+        version: pypy-3.6.4
       services:
         - docker
     steps:
@@ -52,9 +58,6 @@ jobs:
 
 workflows:
   version: 2
-  machine:
-    python:
-      version: pypy-3.6.4
   build:
     jobs:
       - test
