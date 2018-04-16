@@ -1,6 +1,7 @@
 version: 2
 
 jobs:
+  
   test:
     machine:
     docker:
@@ -23,10 +24,6 @@ jobs:
       - run: pytest
 
   deploy-prod:
-    filters:
-      branches:
-        only: 
-        - master
     steps:
       - checkout
       
@@ -59,5 +56,9 @@ workflows:
     jobs:
       - test
       - deploy-prod:
+        filters:
+          branches:
+            only: 
+            - master
         requires:
           - test
