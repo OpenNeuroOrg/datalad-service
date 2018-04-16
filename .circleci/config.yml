@@ -10,11 +10,14 @@ jobs:
       # check python version
       - run: python --version
 
+      # install virtualenv
+      - run: pip install virtualenv
+
       # create venv and install dependencies
       - run:
           name: Install Python deps in a venv
           command: |
-            python3 -m venv .venv
+            virtualenv --python python3 .venv
             source .venv/bin/activate
             pip install -r requirements.txt
 
