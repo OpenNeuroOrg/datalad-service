@@ -3,17 +3,13 @@ version: 2
 jobs:
   test:
     machine:
-      python:
-        version: pypy-3.4.4
-      services:
-        -docker
-    # docker:
-    #   - image: python:3.6-alpine3.7
+    docker:
+      - image: circleci/python:3.6.4
     steps:
       - checkout
 
       # get the build-essentials so we can compile
-      - run: yum install build-essentials
+      - run: apt-get install build-essentials
 
       # check python version
       - run: python --version
