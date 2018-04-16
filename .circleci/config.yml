@@ -11,11 +11,8 @@ jobs:
       # check python version
       - run: python --version
 
-      # update the apt-get repo
-      - run: sudo apt-get update
-      
       # get the build-essentials so we can compile
-      - run: sudo apt-get install build-essentials
+      - run: sudo apt-get update && sudo apt-get install build-essentials
 
       # create venv and install dependencies
       - run:
