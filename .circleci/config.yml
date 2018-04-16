@@ -8,7 +8,7 @@ jobs:
       - checkout
 
       # get the build-essentials so we can compile
-      - run: apt-get install build-essentials
+      - run: apt install build-essentials
 
       # check python version
       - run: python --version
