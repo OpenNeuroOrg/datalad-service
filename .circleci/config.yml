@@ -12,7 +12,7 @@ jobs:
       - run: python --version
 
       # get the build-essentials so we can compile
-      - run: sudo apt-get update && sudo apt-get install build-essentials
+      - run: sudo apt-get update && sudo apt-get install build-essential
 
       # create venv and install dependencies
       - run:
