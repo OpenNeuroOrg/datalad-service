@@ -53,4 +53,8 @@ workflows:
   build:
     jobs:
       - test
-      - deploy-prod
+      - deploy-prod:
+        filters:
+          branches:
+            only:
+              - master
