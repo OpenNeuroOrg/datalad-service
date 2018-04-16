@@ -55,9 +55,9 @@ workflows:
     jobs:
       - test
       - deploy-prod:
-        filters:
-          branches:
-            only: 
-            - master
+        # filters:
+        #   branches:
+        #     only: 
+        #     - master
         requires:
           - test
