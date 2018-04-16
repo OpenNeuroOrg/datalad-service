@@ -23,11 +23,6 @@ jobs:
       - run: pytest
 
   deploy-prod:
-    machine: 
-      python:
-        version: pypy-3.6.4
-      services:
-        - docker
     steps:
       - checkout
       
@@ -41,11 +36,6 @@ jobs:
       - run: docker tag -f openneuro/datalad-service openneuro/datalad-service:latest
       - run: docker push openneuro/datalad-service
   deploy-dev:
-    machine:
-      python:
-        version: pypy-3.6.4
-      services:
-        - docker
     steps:
       - checkout
       
@@ -64,10 +54,10 @@ workflows:
   build:
     jobs:
       - test
-      # - deploy-prod:
-        # requires:
-        #   - test
-      #   filters:
-      #     branches:
-      #       only: 
-      #       - master
+      - deploy-prod:
+        requires:
+          - test
+        filters:
+          branches:
+            only: 
+            - master
