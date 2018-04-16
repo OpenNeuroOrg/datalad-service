@@ -58,6 +58,6 @@ workflows:
   build:
     jobs:
       - test
-      # - deploy-prod:
-      #   requires:
-      #     - test
+      - deploy-prod:
+        requires:
+          - test
