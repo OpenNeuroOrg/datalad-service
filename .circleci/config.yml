@@ -2,6 +2,11 @@ version: 2
 
 jobs:
   test:
+    machine: 
+      node:
+        version: 8.2.0
+      services:
+        - docker
     steps:
       - checkout
       - run: pytest
@@ -50,10 +55,10 @@ workflows:
   build:
     jobs:
       - test
-      # - deploy-prod:
+      - deploy-prod:
+        requires:
+          - test
       #   filters:
       #     branches:
       #       only: 
       #       - master
-      #   requires:
-      #     - test
