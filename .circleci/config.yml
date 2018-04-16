@@ -31,6 +31,8 @@ jobs:
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       
       # build datalad-service 
+      # check environment variables
+      - run: echo $DOCKER_USER && echo $DOCKER_PASS
       - run: docker build --pull -t openneuro/datalad-service
 
       # update latest tag
