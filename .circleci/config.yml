@@ -54,5 +54,5 @@ workflows:
     jobs:
       - build
       - deploy-prod:
-        requires: 
-        - build
+          requires: 
+            - build
