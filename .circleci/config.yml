@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  build:
+  test:
     docker:
       - image: circleci/python:3.6.4
     steps:
@@ -28,7 +28,7 @@ jobs:
       - checkout
       
       # login
-      - run: docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       
       # build datalad-service 
       - run: docker build --pull -t openneuro/datalad-service
@@ -43,7 +43,7 @@ jobs:
       - checkout
       
       # login
-      - run: docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker login  -u $DOCKER_USER -p $DOCKER_PASS
       
       # build datalad-service 
       - run: docker build --pull -t openneuro/datalad-service
@@ -56,7 +56,7 @@ workflows:
   version: 2
   build-and-deploy:
     jobs:
-      - build
+      - test
       - deploy-prod:
           requires: 
-            - build
+            - test
