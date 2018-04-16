@@ -55,10 +55,10 @@ jobs:
 
 workflows:
   version: 2
-  machine:
-    python:
-      version: 3.6.4
   build:
+    machine:
+      python:
+        version: 3.6.4
     jobs:
       - test
       # - deploy-prod:
