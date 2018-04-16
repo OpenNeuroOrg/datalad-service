@@ -8,16 +8,13 @@ jobs:
     steps:
       - checkout
 
-      # check python version
-      - run: python --version
-
       # get the build-essentials so we can compile
       - run: sudo apt-get update && sudo apt-get install build-essential
 
       # create venv and install dependencies
       - run:
           name: Install Python deps
-          command: pip install -r requirements.txt
+          command: sudo pip install -r requirements.txt
 
       # install git-annex
       - run: sudo apt-get install git-annex
