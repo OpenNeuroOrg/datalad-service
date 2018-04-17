@@ -23,7 +23,6 @@ jobs:
 
   deploy:
     machine:
-      enabled: true
       python: pypy-3.4.4
     steps:
       - checkout
@@ -31,8 +30,6 @@ jobs:
       # install dependencies
       - run: sudo apt-get update && sudo apt-get install build-essential && sudo apt-get install libxml2-dev libxslt-dev python-dev
       
-      # list installed dependencies
-      - run: pip list && sudo apt-get list
       # login
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       
