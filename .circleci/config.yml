@@ -23,7 +23,7 @@ jobs:
 
   deploy:
     machine:
-      enable: true
+      enabled: true
     #   python: pypy-3.4.4
     steps:
       - checkout
