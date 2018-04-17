@@ -8,7 +8,7 @@ jobs:
       - checkout
 
       # get the build-essentials so we can compile
-      - run: sudo apt-get update && sudo apt-get install openssl build-essential && sudo apt-get install python-dev libffi-dev gcc libxml2-dev libxslt1-dev zlib1g-dev python-lxml
+      - run: sudo apt-get update && sudo apt-get install build-essential
 
       # create venv and install dependencies
       - run:
@@ -24,12 +24,8 @@ jobs:
   deploy:
     machine:
       enabled: true
-    #   python: pypy-3.4.4
     steps:
       - checkout
-
-      # install dependencies
-      - run: sudo apt-get update && sudo apt-get install build-essential && sudo apt-get install python3-dev libxml2-dev libxslt1-dev zlib1g-dev
       
       # login
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
