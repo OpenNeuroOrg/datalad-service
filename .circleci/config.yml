@@ -8,7 +8,7 @@ jobs:
       - checkout
 
       # get the build-essentials so we can compile
-      - run: sudo apt-get update && sudo apt-get install openssl build-essential && sudo apt-get install libffi-dev gcc libxml2-dev libxslt-dev
+      - run: sudo apt-get update && sudo apt-get install openssl build-essential && sudo apt-get install libffi-dev gcc libxml2-dev libxslt1-dev zlib1g-dev python-lxml
 
       # create venv and install dependencies
       - run:
