@@ -1,4 +1,5 @@
 import falcon
+from .s3 import app
 from .datalad import DataladStore
 from .dataset import DatasetResource
 from .files import FilesResource
