@@ -17,4 +17,4 @@ RUN git config --global user.email "jstiehl@gmail.com" && git config --global us
 ADD ./ssh_config /etc/ssh/ssh_config
 RUN ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-CMD ["gunicorn", "--bind", "0.0.0.0:9877", "--reload", "datalad_service.app:create_app('/repos')"]
+CMD ["gunicorn", "--bind", "0.0.0.0:9877", "--reload", "datalad_service.app:create_app('/repos')", "--workers", "1"]
