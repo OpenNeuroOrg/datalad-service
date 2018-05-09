@@ -56,7 +56,7 @@ class FilesResource(object):
                 file_path = os.path.join(ds_path, filename)
                 os.makedirs(os.path.dirname(file_path), exist_ok=True)
                 # Begin writing stream to disk
-                self._update_file(file_path, req.bounded_stream)
+                self._update_file(file_path, req.stream)
                 # Add to dataset
                 ds = self.store.get_dataset(dataset)
                 media_dict = {'created': filename}
@@ -92,7 +92,7 @@ class FilesResource(object):
                     self.store.set_config(ds, media_dict['name'], media_dict['email'])
                 ds = self.store.get_dataset(dataset)
                 ds.unlock(path=filename)
-                self._update_file(file_path, req.bounded_stream)
+                self._update_file(file_path, req.stream)
                 ds.add(path=filename)
                 ds.publish(to='github')
                 resp.media = media_dict
