@@ -12,7 +12,6 @@ RUN apk --update add --virtual build-dependencies libffi-dev openssl-dev python3
   && pip install -r /requirements.txt \
   && apk del build-dependencies \
   && mkdir /repos
-RUN git config --global user.email "jstiehl@gmail.com" && git config --global user.name "James Stiehl"
 
 ADD ./ssh_config /etc/ssh/ssh_config
 RUN ssh-keyscan github.com >> ~/.ssh/known_hosts
