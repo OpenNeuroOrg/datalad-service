@@ -29,8 +29,8 @@ class DatasetResource(object):
             resp.status = falcon.HTTP_CONFLICT
         else:
             datalad.create()
-
             if (datalad.repo):
+                self.store.create_github_repo(datalad)
                 resp.media = {}
                 resp.status = falcon.HTTP_OK
             else:
