@@ -1,5 +1,7 @@
 import os
 import re
+import mimetypes
+import urllib.parse
 
 import falcon
 
@@ -33,6 +35,8 @@ class FilesResource(object):
         if filename:
             try:
                 fd = open(os.path.join(ds_path, filename), 'rb')
+                mime, _ = mimetypes.guess_type(filename)
+                resp.content_type = mime or 'application/octet-stream'
                 resp.stream = fd
                 resp.stream_len = os.fstat(fd.fileno()).st_size
                 resp.status = falcon.HTTP_OK
