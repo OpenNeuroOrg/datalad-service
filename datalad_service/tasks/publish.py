@@ -21,7 +21,7 @@ def create_github_repo(dataset, repo_name):
                                      github_organization=DATALAD_GITHUB_ORG,
                                      dataset=dataset,
                                      access_protocol='ssh')
-    except KeyError:
+    except AttributeError:
         raise Exception(
             'DATALAD_GITHUB_LOGIN, DATALAD_GITHUB_PASS, DATALAD_GITHUB_ORG must be defined to create remote repos')
 
