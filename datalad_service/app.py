@@ -1,3 +1,5 @@
+import tempfile
+import vmprof
 import falcon
 from datalad_service.datalad import DataladStore
 from datalad_service.handlers.dataset import DatasetResource
@@ -8,6 +10,11 @@ from datalad_service.handlers.snapshots import SnapshotResource
 from datalad_service.handlers.heartbeat import HeartbeatResource
 from datalad_service.handlers.publish import PublishResource
 from datalad_service.middleware.auth import AuthenticateMiddleware
+
+prof_file = tempfile.NamedTemporaryFile(delete=False)
+filename = prof_file.name
+
+vmprof.enable(prof_file.fileno())
 
 
 class PathConverter(falcon.routing.converters.BaseConverter):
