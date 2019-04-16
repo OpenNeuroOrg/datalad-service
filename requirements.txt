@@ -63,7 +63,7 @@ python-mimeparse==1.6.0
 pytz==2018.4
 raven==6.9.0
 redis==2.10.6
-requests==2.18.4
+requests==2.20.1
 s3transfer==0.1.13
 SecretStorage==2.3.1
 simplejson==3.13.2
@@ -71,7 +71,7 @@ six==1.11.0
 smmap2==2.0.3
 tornado==5.0.2
 tqdm==4.23.0
-urllib3==1.22
+urllib3==1.24.1
 vine==1.1.4
 Whoosh==2.7.4
 wrapt==1.10.11
