@@ -1,7 +1,8 @@
 FROM python:3.6.9-alpine3.10
 
 COPY package.json /package.json
-COPY requirements.txt /requirements.txt
+COPY Pipfile /Pipfile
+COPY Pipfile.lock /Pipfile.lock
 COPY datalad_service /datalad_service
 COPY dataset-worker /dataset-worker
 COPY publish-worker /publish-worker
@@ -15,11 +16,12 @@ RUN apk --update add bash yarn git python py-pip openssl openssh ca-certificates
   && rm git-annex-standalone-amd64.tar.gz \
   && mv git-annex.linux/* /usr/local/bin \
   && apk --update add --virtual build-dependencies libffi-dev openssl-dev python3-dev py3-pip build-base libxml2-dev libxslt-dev \
-  && pip install -r /requirements.txt \
+  && pip install pipenv \
+  && pipenv install \
   && apk del build-dependencies wget \
   && mkdir /datalad \
   && ssh-keyscan github.com >> /root/.ssh/known_hosts \
   && chmod 600 /root/.ssh/config \
   && yarn
 
-CMD ["gunicorn", "--bind", "0.0.0.0:9877", "--reload", "datalad_service.app:create_app('/datalad')", "--workers", "8", "--worker-class", "gevent", "--timeout", "60", "--keep-alive", "30"]
+CMD ["pipenv", "run", "gunicorn", "--bind", "0.0.0.0:9877", "--reload", "datalad_service.app:create_app('/datalad')", "--workers", "8", "--worker-class", "gevent", "--timeout", "60", "--keep-alive", "30"]
