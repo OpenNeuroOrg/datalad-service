@@ -7,6 +7,7 @@ verify_ssl = true
 pytest = "*"
 coverage = "*"
 pytest-cov = "*"
+fakeredis = "*"
 
 [packages]
 boto3 = "*"
